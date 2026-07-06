@@ -1,0 +1,12 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow all access for testing
+    match /chats/{chatId}/messages/{messageId} {
+      allow read, write: if true;
+    }
+    match /chats/{chatId} {
+      allow read: if true;
+    }
+  }
+}

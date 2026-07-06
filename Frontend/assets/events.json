@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "InnovateX National Hackathon 2025",
+    "date": "8 Oct 2025",
+    "image": "https://i.ibb.co.com/YTcNL7CP/bubt-hackathon.jpg",
+    "tags": ["#Workshop", "#AI", "#Education"],
+    "description": "Join the ultimate hackathon event featuring cutting-edge AI challenges and workshops."
+  },
+  {
+    "id": 2,
+    "title": "BAPS National Programming Camp 2025",
+    "date": "15 July 2025",
+    "image": "https://i.ibb.co.com/tTtFf9X4/Programming-Camp-bubt.jpg",
+    "tags": ["#Music", "#Festival", "#Cultural"],
+    "description": "A vibrant programming camp with music, festivals, and cultural activities."
+  },
+  {
+    "id": 3,
+    "title": "Labor Day-2025",
+    "date": "1 May 2025",
+    "image": "https://i.ibb.co.com/0Vry0C0Z/May-day-2025.jpg",
+    "tags": ["#Sports", "#Marathon", "#Health"],
+    "description": "Celebrate Labor Day with sports, marathon runs, and health-focused activities."
+  },
+  {
+    "id": 4,
+    "title": "Pohela Boishakh 2025",
+    "date": "15 April 2025",
+    "image": "https://i.ibb.co.com/1f7xwqLp/noboborsho-2025.jpg",
+    "tags": ["#Corporate", "#Launch", "#Business"],
+    "description": "Welcome the Bengali New Year with corporate launches and business events."
+  },
+  {
+    "id": 5,
+    "title": "Pitha Utshop-2025",
+    "date": "18 April 2025",
+    "image": "https://i.ibb.co.com/Z1xJnz4P/Pitha-utsop.jpg",
+    "tags": ["#Birthday", "#Party", "#Personal"],
+    "description": "A festive event celebrating traditional pitha with parties and personal gatherings."
+  },
+  {
+    "id": 6,
+    "title": "6th Convocation-2025",
+    "date": "26 Feb 2025",
+    "image": "https://i.ibb.co.com/BKKnJVqW/convocation.jpg",
+    "tags": ["#Charity", "#Community", "#Social"],
+    "description": "Join the convocation ceremony with charity, community, and social activities."
+  }
+]
