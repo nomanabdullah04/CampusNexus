@@ -9,7 +9,7 @@ CampusNexus is a modern web application designed to streamline, automate, and di
 - **Responsive UI:** Fully optimized for mobile, tablet, and desktop screens.
 
 ## 🛠️ Technologies Used
-- **Frontend:** HTML5, CSS3, JavaScript (or Bootstrap / Tailwind CSS / React if applicable)
+- **Frontend:** HTML5, CSS3, JavaScript (or Bootstrap / Tailwind CSS / React)
 - **Backend/Database:** (Specify your backend/database here, e.g., Node.js / PHP / MySQL / Firebase)
 
 ## 💻 Installation & Setup
@@ -18,7 +18,7 @@ Follow these steps to run the project locally:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com
+   git clone https://github.com/nomanabdullah04/CampusNexus
    ```
 
 2. **Navigate to the project directory:**
