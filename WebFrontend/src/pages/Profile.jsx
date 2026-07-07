@@ -55,27 +55,47 @@ const ProfileTab = ({ user }) => {
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          {items.map((item) => (
-            <div key={item.id} className="card" style={{ cursor: 'pointer' }} onClick={() => navigate(`/products/${item.id}`)}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem' }}>
-                {item.picture ? (
-                  <img src={item.picture} alt={item.title} style={{ width: 72, height: 72, borderRadius: 'var(--radius-md)', objectFit: 'cover', flexShrink: 0 }} onError={(e) => { e.target.style.display = 'none'; }} />
-                ) : (
-                  <div style={{ width: 72, height: 72, borderRadius: 'var(--radius-md)', background: 'var(--color-ash)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <ShoppingBag size={24} color="var(--color-sage)" />
-                  </div>
-                )}
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <p style={{ fontWeight: 700, color: 'var(--color-forest)', marginBottom: '0.25rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.title}</p>
-                  <p style={{ fontSize: '0.875rem', color: 'var(--color-slate)', marginBottom: '0.5rem' }}>৳{item.price}</p>
-                  <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-                    {item.objectCategory && <span className="badge badge-mint" style={{ fontSize: '0.7rem' }}>{item.objectCategory}</span>}
-                    {item.sellingCategory && <span className="badge badge-sage" style={{ fontSize: '0.7rem' }}>{item.sellingCategory}</span>}
+          {items.map((item) => {
+            // For rentals tab: item data is nested under item.item (rental object shape)
+            // For listings tab: data is flat (item object shape)
+            const isRental = activeTab === 'rentals';
+            const displayTitle = isRental ? item.item?.title : item.title;
+            const displayPicture = isRental ? item.item?.picture : item.picture;
+            const displayPrice = isRental ? item.totalPrice : item.price;
+            const displaySellingCategory = isRental ? item.item?.sellingCategory : item.sellingCategory;
+            const displayObjectCategory = isRental ? item.item?.objectCategory : item.objectCategory;
+            const navigateId = isRental ? item.item?.id : item.id;
+
+            return (
+              <div key={item.id} className="card" style={{ cursor: 'pointer' }} onClick={() => navigate(`/products/${navigateId}`)}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem' }}>
+                  {displayPicture ? (
+                    <img src={displayPicture} alt={displayTitle} style={{ width: 72, height: 72, borderRadius: 'var(--radius-md)', objectFit: 'cover', flexShrink: 0 }} onError={(e) => { e.target.style.display = 'none'; }} />
+                  ) : (
+                    <div style={{ width: 72, height: 72, borderRadius: 'var(--radius-md)', background: 'var(--color-ash)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      {isRental ? <Package size={24} color="var(--color-sage)" /> : <ShoppingBag size={24} color="var(--color-sage)" />}
+                    </div>
+                  )}
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <p style={{ fontWeight: 700, color: 'var(--color-forest)', marginBottom: '0.25rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{displayTitle || 'Untitled'}</p>
+                    <p style={{ fontSize: '0.875rem', color: 'var(--color-slate)', marginBottom: '0.25rem' }}>
+                      {isRental ? `Total: ৳${displayPrice}` : `৳${displayPrice}`}
+                    </p>
+                    {isRental && item.startDate && item.endDate && (
+                      <p style={{ fontSize: '0.75rem', color: 'var(--color-slate)', marginBottom: '0.25rem' }}>
+                        {new Date(item.startDate).toLocaleDateString()} → {new Date(item.endDate).toLocaleDateString()}
+                      </p>
+                    )}
+                    <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+                      {isRental && item.status && <span className="badge badge-mint" style={{ fontSize: '0.7rem', textTransform: 'capitalize' }}>{item.status}</span>}
+                      {!isRental && displayObjectCategory && <span className="badge badge-mint" style={{ fontSize: '0.7rem' }}>{displayObjectCategory}</span>}
+                      {displaySellingCategory && <span className="badge badge-sage" style={{ fontSize: '0.7rem' }}>{displaySellingCategory}</span>}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>
